@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Villain × BRND.ME — Influencer Gifting</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -20,6 +20,12 @@
   --r:        4px;
 }
 
+
+/* ── TOUCH OPTIMISATIONS ──────────────────────────── */
+* { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+input, textarea, select { font-size: 16px !important; } /* Prevents iOS zoom on focus */
+body { -webkit-text-size-adjust: 100%; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -238,6 +244,7 @@ header {
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.5px;
+  text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -304,28 +311,26 @@ header {
 
 .card-body { padding: 16px 18px 18px; }
 .card-category {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
   color: var(--red);
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 6px;
 }
 .card-title {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--white);
-  letter-spacing: 0px;
-  line-height: 1.3;
+  letter-spacing: 0;
+  line-height: 1.4;
   margin-bottom: 4px;
 }
 .card-volume {
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   color: var(--gold);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
   margin-bottom: 10px;
 }
 .card-status {
@@ -346,8 +351,9 @@ header {
   border: 1px solid var(--border);
   border-radius: var(--r);
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: 0.3px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -407,7 +413,7 @@ header {
 }
 .cart-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--muted); }
 .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
-.cart-empty-msg { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+.cart-empty-msg { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 13px; }
 .cart-item {
   display: flex; gap: 12px;
   padding: 14px 0;
@@ -425,13 +431,12 @@ header {
 .cart-item-info { flex: 1; }
 .cart-item-title {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--white);
-  letter-spacing: 0px;
-  line-height: 1.3;
+  line-height: 1.35;
 }
-.cart-item-category { font-size: 10px; color: var(--red); margin-top: 2px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+.cart-item-category { font-size: 11px; color: var(--red); margin-top: 2px; font-weight: 500; }
 .cart-item-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; }
 .cart-item-remove:hover { color: var(--red); }
 .cart-footer { padding: 16px 24px; border-top: 1px solid var(--border); }
@@ -442,6 +447,7 @@ header {
   border: none; border-radius: var(--r);
   font-family: 'Inter', sans-serif;
   font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
   cursor: pointer; transition: background 0.2s;
 }
 .cart-checkout-btn:hover { background: #a93226; }
@@ -476,14 +482,14 @@ header {
 }
 .modal-img img { width: 100%; height: 100%; object-fit: cover; }
 .modal-body { padding: 24px; }
-.modal-category { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--red); font-weight: 600; margin-bottom: 8px; }
+.modal-category { font-size: 12px; letter-spacing: 0.3px; color: var(--red); font-weight: 500; margin-bottom: 8px; }
 .modal-title {
   font-family: 'Inter', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: var(--white);
-  letter-spacing: 0px;
-  line-height: 1.2;
+  letter-spacing: 0;
+  line-height: 1.3;
   margin-bottom: 6px;
 }
 .modal-asin { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: 1px; }
@@ -504,7 +510,7 @@ header {
   letter-spacing: 1px; text-transform: uppercase;
   margin-bottom: 20px;
 }
-.modal-stock-badge.in { background: rgba(39,174,96,0.1); color: #27ae60; border: 1px solid rgba(39,174,96,0.3); }
+.modal-stock-badge.in { background: rgba(39,174,96,0.1); color: #27ae60; border: 1px solid rgba(39,174,96,0.3); text-transform: none; }
 .modal-stock-badge.out { background: #1a1a1a; color: #444; }
 .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
 .modal-add-btn {
@@ -513,6 +519,7 @@ header {
   border: none; border-radius: var(--r);
   font-family: 'Inter', sans-serif;
   font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
   cursor: pointer; transition: background 0.2s;
 }
 .modal-add-btn:hover { background: #a93226; }
@@ -566,7 +573,7 @@ header {
 }
 .order-summary-title { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .order-summary-item { font-size: 13px; color: var(--white); padding: 4px 0; display: flex; align-items: center; gap: 8px; }
-.order-summary-item::before { content: '—'; color: var(--red); font-size: 12px; }
+.order-summary-item::before { content: '·'; color: var(--red); font-size: 14px; }
 .form-group { margin-bottom: 16px; }
 .form-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .form-input, .form-textarea {
@@ -584,6 +591,7 @@ header {
   border: none; border-radius: var(--r);
   font-family: 'Inter', sans-serif;
   font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
   cursor: pointer; transition: background 0.2s; margin-top: 4px;
 }
 .form-submit:hover { background: #a93226; }
@@ -633,15 +641,138 @@ footer {
 .footer-logo span { color: var(--red); }
 .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
 
-@media (max-width: 600px) {
-  .hero { padding: 70px 24px 60px; }
-  .catalog-section { padding: 32px 16px; }
-  header { padding: 0 16px; }
-  .cart-drawer { width: 100vw; }
-  .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+/* ════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE OVERHAUL — Brand Portals
+   Breakpoints: 768px (tablet), 480px (mobile)
+   ════════════════════════════════════════════════════ */
+
+/* ── TABLET (768px) ──────────────────────────────── */
+@media (max-width: 768px) {
+  /* Header */
+  header { padding: 0 20px; }
+  .header-inner { height: 60px; }
+  .brand-name { font-size: 20px; }
+  .brand-sub { display: none; }
+  .cart-btn { padding: 8px 14px; font-size: 12px; gap: 6px; }
+
+  /* Hero */
+  .hero { padding: 72px 24px 56px; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 2px; margin-bottom: 16px; }
+  .hero-title { font-size: clamp(38px, 9vw, 56px); }
+  .hero-tagline { font-size: 14px; }
+  .hero-desc { font-size: 13px; margin-bottom: 28px; }
+  .hero-pills { gap: 6px; }
+  .hero-pill { font-size: 11px; padding: 5px 12px; }
+
+  /* Catalog */
+  .catalog-section { padding: 40px 20px; }
+  .section-title { font-size: 28px; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .card-img-wrap { height: 180px; }
-  footer { padding: 20px 24px; }
+
+  /* Filter bar — horizontally scrollable */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    margin-bottom: 24px;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn { flex-shrink: 0; white-space: nowrap; }
+
+  /* Cart drawer */
+  .cart-drawer { width: 100vw; max-width: 100vw; }
+
+  /* Modals — full screen on tablet */
+  .modal { max-width: 100%; border-radius: 16px 16px 0 0; }
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-img { height: 220px; border-radius: 16px 16px 0 0; }
+
+  /* Order form */
+  .order-overlay { padding: 0; align-items: flex-end; }
+  .order-modal { max-width: 100%; border-radius: 16px 16px 0 0; max-height: 95vh; }
+  .order-head { border-radius: 16px 16px 0 0; }
+
+  /* Footer */
+  footer { flex-direction: column; text-align: center; padding: 20px 24px; gap: 8px; }
 }
+
+/* ── MOBILE (480px) ──────────────────────────────── */
+@media (max-width: 480px) {
+  /* Announce bar */
+  .announce { font-size: 10px; letter-spacing: 1px; padding: 7px 12px; }
+
+  /* Header */
+  header { padding: 0 16px; }
+  .header-inner { height: 56px; }
+  .brand-name { font-size: 18px; }
+  .cart-btn { padding: 7px 12px; font-size: 11px; border-radius: 8px; }
+  .cart-btn span:not(.cart-count) { display: none; }
+
+  /* Hero */
+  .hero { padding: 64px 20px 48px; }
+  .hero-title { font-size: clamp(32px, 10vw, 44px); letter-spacing: -0.5px; }
+  .hero-subtitle { font-size: 13px; letter-spacing: 3px; }
+  .hero-tagline { font-size: 13px; margin-bottom: 16px; }
+  .hero-desc { font-size: 13px; line-height: 1.7; margin-bottom: 24px; }
+  .hero-badge { font-size: 10px; padding: 5px 12px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { width: 20px; }
+  .hero-pills { gap: 6px; }
+  .hero-pill { font-size: 10px; padding: 5px 10px; }
+
+  /* Catalog */
+  .catalog-section { padding: 28px 16px 40px; }
+  .section-header { margin-bottom: 16px; }
+  .section-title { font-size: 24px; }
+  .catalog-count { font-size: 12px; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Cards */
+  .card-img-wrap { height: 160px; }
+  .card-body { padding: 10px 12px 12px; }
+  .card-category { font-size: 9px; margin-bottom: 3px; }
+  .card-title { font-size: 13px; line-height: 1.25; margin-bottom: 3px; }
+  .card-volume { font-size: 10px; margin-bottom: 6px; }
+  .card-status { margin-bottom: 8px; }
+  .card-status span { font-size: 10px !important; }
+  .card-action { padding: 8px; font-size: 11px; border-radius: 8px; }
+
+  /* Cart drawer */
+  .cart-drawer { width: 100vw; }
+  .cart-head { padding: 16px 20px; }
+  .cart-head-title { font-size: 18px; }
+  .cart-items { padding: 12px 20px; }
+  .cart-footer { padding: 12px 20px; }
+  .cart-checkout-btn { padding: 13px; font-size: 14px; }
+  .cart-item-img { width: 48px; height: 48px; font-size: 18px; }
+  .cart-item-title { font-size: 14px; }
+
+  /* Product modal */
+  .modal-img { height: 200px; }
+  .modal-body { padding: 18px 20px; }
+  .modal-title { font-size: 20px; }
+  .modal-actions { flex-direction: column; gap: 8px; }
+  .modal-add-btn { padding: 13px; font-size: 13px; }
+  .modal-close-btn { padding: 11px; font-size: 12px; text-align: center; }
+
+  /* Order form */
+  .order-head { padding: 18px 20px; }
+  .order-head-title { font-size: 22px; }
+  .order-body { padding: 18px 20px; }
+  .form-input, .form-textarea { font-size: 16px; padding: 12px 14px; }
+  .form-submit { font-size: 15px; padding: 14px; }
+
+  /* Success screen */
+  .success-icon { font-size: 48px; }
+  .success-title { font-size: 26px; }
+  .success-desc { font-size: 13px; }
+
+  /* Section title (catalog) */
+  .section-title { font-size: 24px; }
+}
+
 </style>
 </head>
 <body>
@@ -690,7 +821,7 @@ footer {
   <div class="catalog-grid" id="catalogGrid">
     <div class="loading-state" id="loadingState" style="grid-column:1/-1;background:var(--black)">
       <div class="loading-dots"><span></span><span></span><span></span></div>
-      <p style="margin-top:16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Loading products...</p>
+      <p style="margin-top:16px;font-size:13px;color:var(--muted)">Loading products...</p>
     </div>
   </div>
 </section>
@@ -825,7 +956,7 @@ async function loadCatalog() {
     renderFilters();
     renderCatalog(products);
     document.getElementById('catalogCount').textContent =
-      products.filter(p => p.inStock).length + ' FRAGRANCES AVAILABLE';
+      products.filter(p => p.inStock).length + ' fragrances available';
   } catch (err) {
     showError('Could not load products. Please refresh.');
   }
@@ -866,7 +997,7 @@ function renderCatalog(items) {
       '<div class="card-title">' + (p.shortTitle || p.title) + '</div>' +
       (p.volume ? '<div class="card-volume">' + p.volume + '</div>' : '') +
       '<div class="card-status"><span class="status-dot ' + (p.inStock ? 'in' : 'out') + '"></span>' +
-      '<span style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">' + (p.inStock ? 'In Stock' : 'Out of Stock') + '</span></div>' +
+      '<span style="font-size:11px;color:var(--muted);">' + (p.inStock ? 'In Stock' : 'Out of Stock') + '</span></div>' +
       '<button class="card-action ' + (!p.inStock ? 'out-btn' : '') + '" ' +
       (!p.inStock ? 'disabled' : '') + ' onclick="event.stopPropagation();' +
       (p.inStock ? 'quickAdd(\'' + p.ean + '\')' : '') + '">' +
@@ -897,7 +1028,7 @@ function openModal(ean) {
   volEl.style.display = p.volume ? 'inline-block' : 'none';
   const stockBadge = document.getElementById('modalStock');
   stockBadge.className   = 'modal-stock-badge ' + (p.inStock ? 'in' : 'out');
-  stockBadge.textContent = p.inStock ? 'IN STOCK' : 'OUT OF STOCK';
+  stockBadge.textContent = p.inStock ? '✅ In Stock' : '❌ Out of Stock';
   const addBtn = document.getElementById('modalAddBtn');
   const inCart = cart.some(c => c.ean === p.ean);
   addBtn.disabled    = !p.inStock || inCart;
