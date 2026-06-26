@@ -159,6 +159,78 @@ footer{border-top:1px solid var(--border);padding:24px 32px;display:flex;align-i
 .footer-copy{font-size:11px;color:var(--muted);letter-spacing:1px;}
 @media(max-width:768px){header{padding:0 20px;}.header-inner{height:60px;}.brand-name{font-size:24px;}.brand-sub{display:none;}.cart-btn{padding:8px 14px;font-size:11px;}.hero{padding:72px 24px 56px;}.catalog-section{padding:40px 20px;}.section-title{font-size:32px;}.catalog-grid{grid-template-columns:repeat(2,1fr);background:none;gap:10px;}.card-img-wrap{height:180px;}.filter-bar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none;margin-bottom:24px;}.filter-bar::-webkit-scrollbar{display:none;}.filter-btn{flex-shrink:0;white-space:nowrap;}.cart-drawer{width:100vw;max-width:100vw;}.modal{max-width:100%;border-radius:16px 16px 0 0;}.modal-overlay{align-items:flex-end;padding:0;}.modal-img{height:220px;}.order-overlay{padding:0;align-items:flex-end;}.order-modal{max-width:100%;border-radius:16px 16px 0 0;max-height:95vh;}footer{flex-direction:column;text-align:center;}}
 @media(max-width:480px){header{padding:0 16px;}.header-inner{height:56px;}.brand-name{font-size:20px;}.cart-btn{padding:7px 12px;font-size:10px;}.cart-btn span:not(.cart-count){display:none;}.hero{padding:60px 20px 44px;}.hero-title{font-size:clamp(52px,14vw,80px);}.catalog-section{padding:24px 16px 40px;}.section-title{font-size:32px;}.catalog-grid{grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}.card-img-wrap{height:160px;}.card-body{padding:10px 12px 12px;}.card-title{font-size:13px;}.card-action{padding:8px;font-size:10px;}.cart-drawer{width:100vw;}.modal-img{height:200px;}.modal-body{padding:18px 20px;}.modal-title{font-size:18px;}.modal-actions{flex-direction:column;gap:8px;}.order-head{padding:18px 20px;}.order-body{padding:18px 20px;}.l-brand{font-size:52px;}}
+
+.hub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.hub-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.95);
+  transform: translateY(-1px);
+}
+/* Icon — SVG home shape */
+.hub-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}
+.hub-btn:hover .hub-btn-icon {
+  transform: scale(1.25) rotate(-8deg);
+}
+/* Ripple on click */
+.hub-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.hub-btn:active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Light-bg variant — for portals with white/cream headers (BH, MP) */
+.hub-btn.light {
+  border-color: rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
+  color: rgba(0,0,0,0.45);
+}
+.hub-btn.light:hover {
+  background: rgba(0,0,0,0.08);
+  border-color: rgba(0,0,0,0.25);
+  color: rgba(0,0,0,0.8);
+}
+.hub-btn.light::after {
+  background: radial-gradient(circle at center, rgba(0,0,0,0.08) 0%, transparent 70%);
+}
+@media(max-width:480px){
+  .hub-btn span.hub-btn-label { display: none; }
+  .hub-btn { padding: 7px; border-radius: 50%; }
+}
+
 </style>
 </head>
 <body>
@@ -171,7 +243,15 @@ footer{border-top:1px solid var(--border);padding:24px 32px;display:flex;align-i
 <div class="announce">Exclusive Influencer Gifting · Villain × BRND.ME</div>
 <header><div class="header-inner">
   <div class="brand-block"><div class="brand-name">VILLAIN<span>.</span></div><div class="brand-sub">Premium Fragrance &nbsp;·&nbsp; by <em>BRND.ME</em></div></div>
-  <button class="cart-btn" onclick="openCart()">MY PICKS <span class="cart-count" id="cartCount">0</span></button>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="https://brndme-hub.vercel.app/" class="hub-btn" target="_blank" title="Back to BRND·ME Hub">
+      <span class="hub-btn-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 6.5L8 1.5L14.5 6.5V14H10.5V10H5.5V14H1.5V6.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      </span>
+      <span class="hub-btn-label">BRND·ME</span>
+    </a>
+    <button class="cart-btn" onclick="openCart()">MY PICKS <span class="cart-count" id="cartCount">0</span></button>
+  </div>
 </div></header>
 <section class="hero">
   <div class="hero-content">
