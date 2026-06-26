@@ -67,11 +67,11 @@ header{background:rgba(10,10,10,.95);border-bottom:1px solid var(--border);posit
 .card-badge{position:absolute;top:10px;left:0;padding:4px 10px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
 .badge-bestseller{background:var(--red);color:var(--white);}
 .badge-outofstock{background:#222;color:#555;}
-.card-body{padding:16px 18px 18px;}
+.card-body{display:flex;flex-direction:column;padding:16px 18px 18px;}
 .card-category{font-size:11px;color:var(--red);font-weight:500;margin-bottom:6px;}
-.card-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--white);line-height:1.4;margin-bottom:4px;}
+.card-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--white);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;height:calc(14px * 1.4 * 4);}
 .card-volume{font-size:11px;color:var(--gold);margin-bottom:10px;}
-.card-status{display:flex;align-items:center;gap:6px;font-size:11px;margin-bottom:12px;}
+.card-status{display:flex;align-items:center;gap:6px;font-size:11px;margin-top:auto;margin-bottom:12px;}
 .status-dot{width:6px;height:6px;border-radius:50%;}
 .status-dot.in{background:#27ae60;}.status-dot.out{background:#333;}
 .card-action{width:100%;padding:10px;background:transparent;color:var(--white);border:1px solid var(--border);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;}
