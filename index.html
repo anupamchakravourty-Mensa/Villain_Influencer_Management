@@ -231,6 +231,56 @@ footer{border-top:1px solid var(--border);padding:24px 32px;display:flex;align-i
   .hub-btn { padding: 7px; border-radius: 50%; }
 }
 
+
+.other-brands-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.other-brands-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.other-brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1.5px solid;
+  transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.brand-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  opacity: 0.9;
+}
+.brand-pill-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@media(max-width:480px){
+  .other-brands-grid { gap: 6px; }
+  .brand-pill { padding: 7px 12px; font-size: 11px; }
+}
+
 </style>
 </head>
 <body>
@@ -297,11 +347,28 @@ footer{border-top:1px solid var(--border);padding:24px 32px;display:flex;align-i
     </div>
   </div>
   <div class="success-screen" id="successScreen">
-    <div class="success-icon">🖤</div><div class="success-title">Request Received</div>
-    <div class="success-desc">Your gifting request has been placed. Our team will process your order and share shipping details directly.</div>
-    <button class="success-back-btn" onclick="resetAll()">Browse More</button>
-    <div class="brndme-tag" style="margin-top:20px;">Villain × <em>BRND.ME</em></div>
-  </div></div>
+  <div class="success-icon">🖤</div>
+  <div class="success-title">Request Received</div>
+  <div class="success-desc">Your gifting request has been placed. Our team will process your order and share shipping details directly.</div>
+  <button class="success-back-btn" onclick="resetAll()">Browse More</button>
+  <div class="other-brands-section" style="border-top-color:rgba(255,255,255,0.1);">
+    <div class="other-brands-label" style="color:#6B6560;">Explore other brands</div>
+    <div class="other-brands-grid">
+      <a href="https://influencer-portal-liart.vercel.app/" class="brand-pill" target="_blank" style="color:#C4758A;border-color:#8B1A2B;background:rgba(139,26,43,0.15);">
+        <span class="brand-pill-dot" style="background:#8B1A2B;"></span>Ishin
+      </a>
+      <a href="https://botanic-hearth-influencer-managemen.vercel.app/" class="brand-pill" target="_blank" style="color:#7A9E7E;border-color:#1A3D2B;background:rgba(26,61,43,0.2);">
+        <span class="brand-pill-dot" style="background:#4A7C59;"></span>Botanic Hearth
+      </a>
+      <a href="https://majestic-pure-influencer-management.vercel.app/" class="brand-pill" target="_blank" style="color:#9B7FBD;border-color:#4A2D7A;background:rgba(74,45,122,0.2);">
+        <span class="brand-pill-dot" style="background:#4A2D7A;"></span>Majestic Pure
+      </a>
+      <a href="https://my-fitness-influencer-management.vercel.app/" class="brand-pill" target="_blank" style="color:#E8732A;border-color:#E8732A;background:rgba(232,115,42,0.15);">
+        <span class="brand-pill-dot" style="background:#E8732A;"></span>MyFitness
+      </a>
+    </div>
+  </div>
+  <div class="brndme-tag" style="margin-top:20px;">Villain × <em>BRND.ME</em></div>
 </div>
 <footer><div class="footer-logo">VILLAIN<span>.</span></div><div class="footer-copy">© 2026 BRND.ME · Influencer Gifting Program · IFRA Certified</div></footer>
 <script>
