@@ -433,9 +433,26 @@ function openCart(){document.getElementById('cartOverlay').classList.add('open')
 function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartDrawer').classList.remove('open');document.body.style.overflow='';}
 function openOrderForm(){closeCart();document.getElementById('orderSummaryItems').innerHTML=cart.map(p=>'<div class="order-summary-item">'+(p.shortTitle||p.title)+'</div>').join('');document.getElementById('orderOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeOrderForm(){document.getElementById('orderOverlay').classList.remove('open');document.body.style.overflow='';}
+
+function cleanPhone(raw) {
+  var s = raw.trim().replace(/[\s\-().]/g, '');
+  // Remove leading + sign
+  s = s.replace(/^\+/, '');
+  // Remove known country codes if number is longer than 10 digits
+  // UAE: 971 (then 9 digits), India: 91 (then 10 digits), US: 1 (then 10 digits)
+  if (s.length > 10) {
+    if (s.startsWith('971') && s.length === 12) s = s.slice(3);
+    else if (s.startsWith('91') && s.length === 12) s = s.slice(2);
+    else if (s.startsWith('1') && s.length === 11) s = s.slice(1);
+    else s = s.slice(-10); // fallback: keep last 10 digits
+  }
+  return s;
+}
 async function submitOrder(){
-  const name=document.getElementById('fieldName').value.trim(),contact=document.getElementById('fieldContact').value.trim(),address=document.getElementById('fieldAddress').value.trim();
-  if(!name||!contact||!address){alert('Please fill in all fields.');return;}
+  const name=document.getElementById('fieldName').value.trim(),rawContact=document.getElementById('fieldContact').value.trim(),address=document.getElementById('fieldAddress').value.trim();
+  if(!name||!rawContact||!address){alert('Please fill in all fields.');return;}
+  const contact=cleanPhone(rawContact);
+  if(contact.length<7||contact.length>15){alert('Please enter a valid contact number.');return;}
   const btn=document.querySelector('.form-submit');btn.textContent='Submitting...';btn.disabled=true;
   try{await fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({orders:cart.map(p=>({timestamp:new Date().toISOString(),orderId:'VL-'+Date.now(),name,contact,address,ean:p.ean,asin:p.asin,sku:p.sku,brand:p.brand,category:p.category,title:p.shortTitle||p.title,image:p.image}))})});}catch(e){}
   document.getElementById('orderFormContent').style.display='none';document.getElementById('successScreen').classList.add('show');
